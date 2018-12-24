@@ -16,8 +16,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "deploy": "yarn run compile && npm publish lib",
+    "compile": "node scripts/build.js && rollup -c=./rollup.config.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -31,6 +31,8 @@
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
+    "fs-extra": "^7.0.1",
     "rollup": "^0.68.2",
     "rollup-plugin-babel": "^4.1.0"
   }
