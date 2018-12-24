@@ -1,28 +1,44 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Post from './components/Post';
+import ReactSliderCarousel from './react-slider-carousel/ReactSliderCarousel';
+import times from 'lodash/times';
+import { Global } from '@emotion/core';
+import css from '@emotion/css/macro';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+const totalLength = 12;
+
+const App = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handeNext = () => {
+    setCurrentIndex((currentIndex + 1) % totalLength);
+  };
+  const handePrev = () => {
+    setCurrentIndex((currentIndex - 1 + totalLength) % totalLength);
+  };
+
+  return (
+    <>
+      <Global
+        styles={css`
+          body {
+            margin: 0;
+          }
+          /* * {
+            box-sizing: border-box;
+          } */
+        `}
+      />
+      <button onClick={handeNext}>Next</button>
+      <button onClick={handePrev}>Prev</button>
+
+      <ReactSliderCarousel currentIndex={currentIndex}>
+        {times(totalLength, index => (
+          <Post key={index} />
+        ))}
+      </ReactSliderCarousel>
+    </>
+  );
+};
 
 export default App;
