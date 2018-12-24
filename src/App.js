@@ -32,7 +32,7 @@ const App = () => {
       <button onClick={handeNext}>Next</button>
       <button onClick={handePrev}>Prev</button>
 
-      <ReactSliderCarousel currentIndex={currentIndex}>
+      <ReactSliderCarousel currentIndex={currentIndex} slidesToShow={3}>
         {times(totalLength, index => (
           <Post key={index} />
         ))}

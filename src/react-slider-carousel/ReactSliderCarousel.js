@@ -3,8 +3,7 @@ import ResizeObserverContainer from './ResizeObserverContainer';
 
 const ContainerStyle = {
   width: '100%',
-  overflow: 'hidden',
-  border: '1px solid black'
+  overflow: 'hidden'
 };
 const TrackStyle = {
   display: 'flex',
@@ -20,21 +19,24 @@ const LiStyle = {
   flexGrow: 1
 };
 
-const ReactSliderCarousel = ({ children, currentIndex }) => {
+const ReactSliderCarousel = ({ children, currentIndex, slidesToShow }) => {
   const totalChildren = React.Children.count(children);
 
   return (
     <ResizeObserverContainer style={ContainerStyle}>
-      {({ width, height }) => {
+      {({ width }) => {
+        const TrackWidth = `${(totalChildren * width) / slidesToShow}px`;
+        const TrackTransform = `translateX(${-(
+          currentIndex *
+          (100 / totalChildren)
+        )}%)`;
+
         return (
           <ul
             style={{
               ...TrackStyle,
-              width: `${totalChildren * width}px`,
-              transform: `translateX(${-(
-                currentIndex *
-                (100 / totalChildren)
-              )}%)`
+              width: TrackWidth,
+              transform: TrackTransform
             }}
           >
             {React.Children.map(children, child => (
