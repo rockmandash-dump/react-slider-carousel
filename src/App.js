@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
-import Post from './components/Post';
+import styled from '@emotion/styled';
 import ReactSliderCarousel from './react-slider-carousel/ReactSliderCarousel';
 import times from 'lodash/times';
 import { Global } from '@emotion/core';
 import css from '@emotion/css/macro';
 
-const totalLength = 12;
+const Container = styled.img`
+  display: block;
+  width: 100%;
+`;
+
+const totalLength = 5;
 
 const App = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -24,17 +29,17 @@ const App = () => {
           body {
             margin: 0;
           }
-          /* * {
-            box-sizing: border-box;
-          } */
         `}
       />
       <button onClick={handeNext}>Next</button>
       <button onClick={handePrev}>Prev</button>
 
-      <ReactSliderCarousel currentIndex={currentIndex} slidesToShow={3}>
+      <ReactSliderCarousel currentIndex={currentIndex} slidesToShow={2}>
         {times(totalLength, index => (
-          <Post key={index} />
+          <Container
+            key={index}
+            src="https://source.unsplash.com/user/erondu/500x500"
+          />
         ))}
       </ReactSliderCarousel>
     </>

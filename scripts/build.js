@@ -7,11 +7,13 @@ fs.writeFile(
   `${path.resolve(__dirname, '../lib')}/package.json`,
   `{
   "name": "react-slider-carousel",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "dependencies": {
-    "react": "^16.7.0-alpha.2",
-    "react-dom": "^16.7.0-alpha.2",
     "resize-observer-polyfill": "^1.5.1"
+  },
+  "peerDependencies": {
+    "react": "16.7.0-alpha.2",
+    "react-dom": "16.7.0-alpha.2"
   }
 }`,
   'utf8'
