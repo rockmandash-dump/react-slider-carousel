@@ -7,7 +7,8 @@ fs.writeFile(
   `${path.resolve(__dirname, '../lib')}/package.json`,
   `{
   "name": "react-slider-carousel",
-  "version": "0.1.4",
+  "version": "0.1.6",
+  "main": "index.js",
   "dependencies": {
     "resize-observer-polyfill": "^1.5.1"
   },

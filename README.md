@@ -2,6 +2,7 @@
 
 | Name               | Type   | Description | Default |
 | :----------------- | :----- | :---------- | :------ |
+| currentIndex       | Number |             |         |
 | slidesToShow       | Number |             |         |
 | ContainerStyleProp | Object |             |         |
 | TrackStyleProp     | Object |             |         |

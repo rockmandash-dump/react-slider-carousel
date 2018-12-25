@@ -8,7 +8,7 @@ const ContainerStyle = {
 const TrackStyle = {
   display: 'flex',
   justifyContent: 'flex-start',
-  alignItems: 'flex-start',
+  alignItems: 'stretch',
   padding: '0',
   margin: '0',
   transition: 'transform 0.5s ease'
