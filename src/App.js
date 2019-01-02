@@ -34,7 +34,11 @@ const App = () => {
       <button onClick={handeNext}>Next</button>
       <button onClick={handePrev}>Prev</button>
 
-      <ReactSliderCarousel currentIndex={currentIndex} slidesToShow={2}>
+      <ReactSliderCarousel
+        currentIndex={currentIndex}
+        slidesToShow={1}
+        reduceRenderedChildren={true}
+      >
         {times(totalLength, index => (
           <Container
             key={index}

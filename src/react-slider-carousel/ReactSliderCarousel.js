@@ -15,8 +15,7 @@ const TrackStyle = {
 };
 
 const ListStyle = {
-  listStyleType: 'none',
-  flexGrow: 1
+  listStyleType: 'none'
 };
 
 const ReactSliderCarousel = ({
@@ -28,7 +27,8 @@ const ReactSliderCarousel = ({
   ListStyleProp = {},
   ContainerProp = {},
   TrackProp = {},
-  ListProp = {}
+  ListProp = {},
+  reduceRenderedChildren = false
 }) => {
   const totalChildren = React.Children.count(children);
 
@@ -67,20 +67,31 @@ const ReactSliderCarousel = ({
             {...TrackProp}
           >
             {React.Children.map(children, (child, index) => (
-              <li style={{ ...ListStyle, ...ListStyleProp }} {...ListProp}>
+              <li
+                style={{
+                  ...ListStyle,
+                  width: `${width / slidesToShow}px`,
+                  ...ListStyleProp
+                }}
+                {...ListProp}
+              >
                 {(() => {
-                  if (index === currentIndex) {
+                  if (reduceRenderedChildren) {
+                    if (index === currentIndex) {
+                      return child;
+                    }
+
+                    if (
+                      index >= currentIndex - slidesToShow &&
+                      index <= currentIndex + slidesToShow
+                    ) {
+                      return child;
+                    }
+
+                    return null;
+                  } else {
                     return child;
                   }
-
-                  if (
-                    index >= currentIndex - slidesToShow &&
-                    index <= currentIndex + slidesToShow
-                  ) {
-                    return child;
-                  }
-
-                  return null;
                 })()}
               </li>
             ))}
