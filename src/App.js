@@ -10,7 +10,7 @@ const Container = styled.img`
   width: 100%;
 `;
 
-const totalLength = 5;
+const totalLength = 10;
 
 const App = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

@@ -66,9 +66,22 @@ const ReactSliderCarousel = ({
             }}
             {...TrackProp}
           >
-            {React.Children.map(children, child => (
+            {React.Children.map(children, (child, index) => (
               <li style={{ ...ListStyle, ...ListStyleProp }} {...ListProp}>
-                {child}
+                {(() => {
+                  if (index === currentIndex) {
+                    return child;
+                  }
+
+                  if (
+                    index >= currentIndex - slidesToShow &&
+                    index <= currentIndex + slidesToShow
+                  ) {
+                    return child;
+                  }
+
+                  return null;
+                })()}
               </li>
             ))}
           </ul>
